@@ -1,13 +1,118 @@
+import moment from 'moment';
+
 export const Matcher = {
-  // 'on monday' => ['monday']
-  onWeekDayRegEx: /( on (monday|tuesday|wednesday|thursday|friday|saturday|sunday))|(on (monday|tuesday|wednesday|thursday|friday|saturday|sunday) )/i,
-
-  // 'at 8pm' => ['8', 'pm']
-  atHourAmPm: /( at ([1-9]|1[0-2])(am|pm))|(at ([1-9]|1[0-2])(am|pm) )/i,
-
-  // 'at 20:56' => ['20', '56']
-  atHourDoublePoint: /( at (00|[0-1][1-9]|2[0-3]):(00|[0-5][0-9]|5))|(at (00|[0-1][1-9]|2[0-3]):(00|[0-5][0-9]|5) )/i,
-
-  // 'do this tomorrow' | 'tomorrow do this' => ['tomorrow']
-  todayOrTomorrowOrAfterTomorrow: / (today|tomorrow|the day after tomorrow)|(today|tomorrow|the day after tomorrow) /i,
+  modules: {
+    en_GB: [
+      {
+        name: 'onWeekDayRegEx',
+        type: 'day',
+        regex: / on (monday|tuesday|wednesday|thursday|friday|saturday|sunday)|on (monday|tuesday|wednesday|thursday|friday|saturday|sunday) /i,
+        getResult(matches) {
+          const condition = matches[1];
+          switch (condition) {
+            case 'monday':
+              return moment().day(7 + 1).startOf('day').toDate();
+            case 'tuesday':
+              return moment().day(7 + 2).startOf('day').toDate();
+            case 'wednesday':
+              return moment().day(7 + 3).startOf('day').toDate();
+            case 'thursday':
+              return moment().day(7 + 4).startOf('day').toDate();
+            case 'friday':
+              return moment().day(7 + 5).startOf('day').toDate();
+            case 'saturday':
+              return moment().day(7 + 6).startOf('day').toDate();
+            case 'sunday':
+              return moment().day(7 + 7).startOf('day').toDate();
+            default:
+              return undefined;
+          }
+        },
+      },
+      {
+        name: 'todayOrTomorrowOrAfterTomorrow',
+        type: 'day',
+        regex: / (today|tomorrow|the day after tomorrow)|(today|tomorrow|the day after tomorrow) /i,
+        getResult(matches) {
+          const condition = matches[1] || matches[2];
+          switch (condition) {
+            case 'today':
+              return moment().startOf('day').toDate();
+            case 'tomorrow':
+              return moment().add('days', 1).startOf('day').toDate();
+            case 'the day after tomorrow':
+              return moment().add('days', 2).startOf('day').toDate();
+            default:
+              return undefined;
+          }
+        },
+      },
+      {
+        name: 'atHoursAmPm',
+        type: 'time',
+        regex: / at ([1-9]|1[0-2])(am|pm)|at ([1-9]|1[0-2])(am|pm) /i,
+        getResult(matches) {
+          const period = matches[2];
+          const periodHours = parseInt(matches[1], 10);
+          let hours = 0;
+          if (period === 'pm') {
+            hours += 12;
+          }
+          if (periodHours !== 12) {
+            hours += periodHours;
+          }
+          return moment().startOf('day').hours(hours).toDate();
+        },
+      },
+      {
+        name: 'atHoursDotMinutesAmPm',
+        type: 'time',
+        regex: / at ([1-9]|1[0-2])\.(00|[0-5][0-9]|[0-59])(am|pm)|at ([1-9]|1[0-2])\.(00|[0-5][0-9]|[0-59])(am|pm) /,
+        getResult(matches) {
+          const period = matches[3];
+          const periodHours = parseInt(matches[1], 10);
+          let hours = 0;
+          if (period === 'pm') {
+            hours += 12;
+          }
+          if (periodHours !== 12) {
+            hours += periodHours;
+          }
+          const minutes = parseInt(matches[2], 10);
+          return moment().startOf('day').hours(hours).minutes(minutes).toDate();
+        },
+      },
+      {
+        name: 'atHoursDoublePointsOrHMinutes',
+        type: 'time',
+        regex: / at (00|[0-9]|[0-1][1-9]|2[0-3])(?::|h)(00|[0-5][0-9]|[0-59])|at (00|[0-9]|[0-1][1-9]|2[0-3])(?::|h)(00|[0-5][0-9]|[0-59]) /i,
+        getResult(matches) {
+          const hours = parseInt(matches[1], 10);
+          const minutes = parseInt(matches[2], 10);
+          return moment().startOf('day').hours(hours).minutes(minutes).toDate();
+        },
+      },
+    ],
+  },
 };
+
+export function setDay(currentDate, day) {
+  const newDate = moment(day);
+  const computedDate = moment(currentDate)
+    .date(newDate.date())
+    .month(newDate.month())
+    .year(newDate.year())
+    .toDate();
+  return computedDate ? computedDate : currentDate;
+}
+
+export function setTime(currentDate, time) {
+  const newTime = moment(time);
+  const computedDate = moment(currentDate)
+    .startOf('day')
+    .hours(newTime.hours())
+    .minutes(newTime.minutes())
+    .toDate();
+  return computedDate ? computedDate : currentDate;
+}
+

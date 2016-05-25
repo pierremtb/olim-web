@@ -1,21 +1,9 @@
 import React from 'react';
 import { TasksGroup } from '../components/tasks-group.jsx';
 import moment from 'moment';
+import { TaskAdder } from './task-adder.jsx';
 
 export function TasksList(props) {
-  const tasks = [
-    {
-      title: 'This week is dedicated to Work',
-      dueDate: new Date(),
-      tag: 'Work',
-      disabled: true,
-    },
-    {
-      title: 'This week is dedicated to Work Rihanna',
-      dueDate: new Date(),
-      tag: 'Rihanna',
-    },
-  ];
   const todayTasks = props.tasks.filter(task =>
     moment(task.dueDate).startOf('day').isSame(moment().startOf('day'))
   );
@@ -31,6 +19,7 @@ export function TasksList(props) {
   const laterTasks = props.tasks.filter(task =>
     moment(task.dueDate).startOf('day').isAfter(moment().add('days', 8).startOf('day'))
   );
+
   return (
     <div>
       <TasksGroup
@@ -49,6 +38,7 @@ export function TasksList(props) {
         tasks={laterTasks}
         groupName={'Later'}
       />
+      <TaskAdder tasks={props.tasks} tags={props.tags} />
     </div>
   );
 }
