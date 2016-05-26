@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { red400, indigo400, teal400, amber400 } from 'material-ui/styles/colors';
 
 export const Matcher = {
   modules: {
@@ -94,6 +95,35 @@ export const Matcher = {
       },
     ],
   },
+};
+
+export const DefaultTags = {
+  en_GB: [
+    {
+      name: 'Work',
+      comments: 'Calls, meetings',
+      color: red400,
+      icon: 'work',
+    },
+    {
+      name: 'Personnal',
+      comments: 'Family, health',
+      color: indigo400,
+      icon: 'pets',
+    },
+    {
+      name: 'Optional',
+      comments: 'Extra stuff to improve',
+      color: teal400,
+      icon: 'looks',
+    },
+    {
+      name: 'Side',
+      comments: 'Your next big thing',
+      color: amber400,
+      icon: 'explore',
+    },
+  ],
 };
 
 export function setDay(currentDate, day) {

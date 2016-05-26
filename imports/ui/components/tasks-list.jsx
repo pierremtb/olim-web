@@ -25,18 +25,22 @@ export function TasksList(props) {
       <TasksGroup
         tasks={todayTasks}
         groupName={'Today'}
+        availableTags={props.tags}
       />
       <TasksGroup
         tasks={tomorrowTasks}
         groupName={'Tomorrow'}
+        availableTags={props.tags}
       />
       <TasksGroup
         tasks={nextSevenDaysTasks}
         groupName={'In the next 7 days'}
+        availableTags={props.tags}
       />
       <TasksGroup
         tasks={laterTasks}
         groupName={'Later'}
+        availableTags={props.tags}
       />
       <TaskAdder tasks={props.tasks} tags={props.tags} />
     </div>

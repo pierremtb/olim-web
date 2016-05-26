@@ -3,13 +3,11 @@ import TextField from 'material-ui/TextField';
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import Paper from 'material-ui/Paper';
 import SubHeader from 'material-ui/Subheader';
-import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
 import { insertTask } from '../../api/tasks/methods';
 import { Task } from '../components/task.jsx';
 import Divider from 'material-ui/Divider';
 import { secondaryTextStyle, accentColor, disabledColor } from '../utils/themes';
-import moment from 'moment';
 import { Matcher, setDay, setTime } from '../utils/helpers';
 
 export class TaskAdder extends React.Component {
@@ -19,9 +17,8 @@ export class TaskAdder extends React.Component {
     this.originalState = {
       titleValue: '',
       isReminder: false,
-      reminderTimeValue: 0,
-      isTag: false,
-      tagValue: '',
+      reminderValue: undefined,
+      tagValue: null,
       dueDateValue: new Date(),
     };
 
@@ -47,10 +44,10 @@ export class TaskAdder extends React.Component {
       done: false,
     };
     if (this.state.isReminder) {
-      task.reminder = { time: this.state.reminderTimeValue };
+      task.reminder = this.state.reminder;
     }
-    if (this.state.isTag) {
-      task.tag = { time: this.state.tagValue };
+    if (this.state.tagValue) {
+      task.tag = this.state.tagValue;
     }
     insertTask.call(task, (err) => {
       if (!err) {
@@ -95,26 +92,6 @@ export class TaskAdder extends React.Component {
     });
     newState.titleValue = text;
     this.setState(newState);
-    /*
-    const todayOrTomorrowOrAfterTomorrow = text.match(Matcher.todayOrTomorrowOrAfterTomorrow);
-    if (todayOrTomorrowOrAfterTomorrow) {
-      const cond = todayOrTomorrowOrAfterTomorrow[1] || todayOrTomorrowOrAfterTomorrow[2];
-      switch (cond) {
-        case 'today':
-          newState.dueDateValue = moment().startOf('day').toDate();
-          text = text.replace(new RegExp(todayOrTomorrowOrAfterTomorrow[0], 'i'), '');
-          break;
-        case 'tomorrow':
-          newState.dueDateValue = moment().add('days', 1).startOf('day').toDate();
-          text = text.replace(todayOrTomorrowOrAfterTomorrow[0], '');
-          break;
-        case 'the day after tomorrow':
-          newState.dueDateValue = moment().add('days', 2).startOf('day').toDate();
-          text = text.replace(todayOrTomorrowOrAfterTomorrow[0], '');
-          break;
-        default: break;
-      }
-    }*/
   }
 
 
@@ -142,10 +119,13 @@ export class TaskAdder extends React.Component {
               <Task
                 title={this.state.titleValue}
                 dueDate={this.state.dueDateValue}
-                reminderTime={this.state.reminderTimeValue}
+                reminder={this.state.reminderValue}
                 disabled={false}
-                onDateChange={(dueDate) => this.setState({ dueDateValue: dueDate })}
-                onReminderChange={(time) => this.setState({ reminderTimeValue: time })}
+                availableTags={this.props.tags}
+                tag={this.props.tags.filter(tag => tag._id === this.state.tagValue)[0]}
+                onTagChange={tagId => this.setState({ tagValue: tagId })}
+                onDateChange={dueDate => this.setState({ dueDateValue: dueDate })}
+                onReminderChange={reminder => this.setState({ reminderValue: reminder })}
                 editing
               />
               <Divider />

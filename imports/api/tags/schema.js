@@ -12,6 +12,10 @@ export const insertTagSchema = new SimpleSchema({
     type: String,
     regEx: /^[a-zA-Z0-9_-]{2,20}$/,
   },
+  comments: {
+    type: String,
+    optional: true,
+  },
   color: {
     type: String,
     optional: true,

@@ -1,5 +1,6 @@
 import 'jquery-validation';
 import { browserHistory } from 'react-router';
+import { insertDefaultTags } from '../api/tags/methods';
 
 let component;
 let signup;
@@ -23,6 +24,7 @@ function handleLogin() {
       if (error) {
         alert(error.reason);
       } else {
+        insertDefaultTags.call({ _id: Meteor.userId() });
         browserHistory.push('/');
       }
     });

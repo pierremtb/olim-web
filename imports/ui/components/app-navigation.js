@@ -5,6 +5,7 @@ export function AppNavigation(props) {
   function renderNavigation(isUser) {
     return isUser ? <AuthenticatedNavigation /> : null;
   }
+  console.log(props);
   return <div> {renderNavigation(props.isUser)}</div>;
 }
 

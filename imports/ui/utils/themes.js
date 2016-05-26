@@ -2,6 +2,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {
   black,
   white,
+  lightBlack,
   darkBlack,
   blueGrey900,
   blueGrey800,
@@ -18,7 +19,10 @@ export const avatarBackgroundColor = emphasize(white, 0.26);
 export const globalTheme = getMuiTheme({
   palette: {
     accent1Color: accentColor,
-    primary1Color: /*primaryColor*/accentColor,
+    primary1Color: accentColor,
+  },
+  floatingActionButton: {
+    iconColor: lightBlack,
   },
 });
 

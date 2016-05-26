@@ -30,7 +30,10 @@ export const updateTask = new ValidatedMethod({
   name: 'tasks.update',
   validate: new SimpleSchema({
     _id: { type: String },
-    'update.title': { type: String, optional: true },
+    update: { type: Object },
+    'update.dueDate': { type: Date, optional: true },
+    'update.reminder': { type: Object, optional: true },
+    'update.reminder.time': { type: Number, optional: true },
   }).validator(),
   run({ _id, update }) {
     Tasks.update(_id, { $set: update });

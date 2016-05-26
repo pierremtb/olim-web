@@ -1,10 +1,10 @@
 import React from 'react';
-import TasksList from '../containers/tasks-list';
+import TagsList from '../containers/tags-list';
 
-export function PageTasks() {
+export function PageTags() {
   return (
     <div className="container">
-      <TasksList />
+      <TagsList />
       <br />
       <br />
       <br />
