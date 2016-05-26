@@ -7,6 +7,9 @@ export const insertTag = new ValidatedMethod({
   name: 'tags.insert',
   validate: insertTagSchema.validator(),
   run(tag) {
+    if (Tags.findOne({ owner: tag.owner, name: tag.name })) {
+      throw new Meteor.Error('This tag name already exists');
+    }
     Tags.insert(tag);
   },
 });
@@ -15,7 +18,10 @@ export const updateTag = new ValidatedMethod({
   name: 'tags.update',
   validate: new SimpleSchema({
     _id: { type: String },
-    'update.title': { type: String, optional: true },
+    'update.name': { type: String, optional: true },
+    'update.icon': { type: String, optional: true },
+    'update.color': { type: String, optional: true },
+    'update.comments': { type: String, optional: true },
   }).validator(),
   run({ _id, update }) {
     Tags.update(_id, { $set: update });

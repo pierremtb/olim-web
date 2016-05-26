@@ -65,14 +65,15 @@ export class TaskAdder extends React.Component {
   handleChange(event) {
     let text = event.target.value;
     const newState = {};
-    let { dueDateValue } = this.state;
+    let tag;
+    let { dueDateValue, tagValue } = this.state;
     Matcher.modules.en_GB.map(module => {
       const matches = text.match(module.regex);
       if (matches) {
         console.log(matches);
         const result = module.getResult(matches);
         console.log(result);
-        if (result && !isNaN(result.getTime())) {
+        if (result) {
           switch (module.type) {
             case 'time':
               dueDateValue = setTime(dueDateValue, result);
@@ -80,11 +81,18 @@ export class TaskAdder extends React.Component {
             case 'day':
               dueDateValue = setDay(dueDateValue, result);
               break;
+            case 'tag':
+              tag = this.props.tags.filter(t => t.name === result)[0];
+              if (tag) {
+                tagValue = tag._id;
+              }
+              break;
             default: break;
           }
           text = text.replace(matches[0], '');
           newState.titleValue = text;
           newState.dueDateValue = dueDateValue;
+          newState.tagValue = tagValue;
           this.setState(newState);
         }
       }

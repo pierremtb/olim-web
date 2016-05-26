@@ -150,7 +150,6 @@ export class Task extends React.Component {
   }
 
   getTagColor() {
-    console.log(this.props.tag);
     if (!this.props.done) {
       return white;
     }
@@ -472,6 +471,7 @@ export class Task extends React.Component {
           onRequestClose={this.handleTagsPopoverClose}
         >
           <Menu>
+            <SubHeader>Set a tag</SubHeader>
               {this.props.availableTags ?
                 this.props.availableTags.map(tag =>
                   <MenuItem

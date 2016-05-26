@@ -44,6 +44,10 @@ export class TasksGroup extends React.Component {
     });
   }
 
+  setTag(_id, tag) {
+    updateTask.call({ _id, update: { tag } });
+  }
+
   render() {
     if (this.props.tasks.length === 0 || !this.props.tasks) {
       return <div></div>;
@@ -108,7 +112,7 @@ export class TasksGroup extends React.Component {
                 title={task.title}
                 dueDate={task.dueDate}
                 tag={this.props.availableTags.filter(tag => tag._id === task.tag)[0]}
-                onTagChange={tagId => this.setState({ tagValue: tagId })}
+                onTagChange={tagId => this.setTag(task._id, tagId)}
                 availableTags={this.props.availableTags}
                 done={task.done}
                 taskId={task._id}

@@ -51,6 +51,7 @@ export class Tag extends React.Component {
             iconClassName="material-icons"
             tooltip="Delete"
             iconStyle={{ color: grey600 }}
+            onTouchTap={this.props.onDeleteClick}
             style={{
               position: 'absolute',
               right: 0,
@@ -61,6 +62,7 @@ export class Tag extends React.Component {
           <IconButton
             iconClassName="material-icons"
             tooltip="Edit"
+            onTouchTap={this.props.onEditClick}
             iconStyle={{ color: grey600 }}
             style={{
               position: 'absolute',
@@ -81,4 +83,6 @@ Tag.propTypes = {
   icon: React.PropTypes.string,
   color: React.PropTypes.string,
   tagId: React.PropTypes.string,
+  onEditClick: React.PropTypes.func,
+  onDeleteClick: React.PropTypes.func,
 };

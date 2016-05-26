@@ -93,6 +93,15 @@ export const Matcher = {
           return moment().startOf('day').hours(hours).minutes(minutes).toDate();
         },
       },
+      {
+        name: 'tag',
+        type: 'tag',
+        regex: / (#[a-zA-Z0-9_-]{1,20}$)| (#[a-zA-Z0-9_-]{1,20})|(#[a-zA-Z0-9_-]{1,20}) /i,
+        getResult(matches) {
+          const hash = matches[1] || matches[2];
+          return hash.replace('#', '');
+        },
+      },
     ],
   },
 };
