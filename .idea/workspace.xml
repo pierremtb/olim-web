@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9053f955-bdb5-4289-a27e-43622fd38db9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/app-navigation.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/chip.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/components/empty-loading.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/pages/settings.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imports/ui/pages/tasks.jsx" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imports/ui/components/app-navigation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imports/ui/pages/tasks.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/components/authenticated-navigation.js" afterPath="$PROJECT_DIR$/imports/ui/components/authenticated-navigation.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/components/public-navigation.js" afterPath="$PROJECT_DIR$/imports/ui/components/public-navigation.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/layouts/app-layout.js" afterPath="$PROJECT_DIR$/imports/ui/layouts/app-layout.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/pages/login.js" afterPath="$PROJECT_DIR$/imports/ui/pages/login.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/pages/not-found.js" afterPath="$PROJECT_DIR$/imports/ui/pages/not-found.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/pages/recover-password.js" afterPath="$PROJECT_DIR$/imports/ui/pages/recover-password.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/pages/reset-password.js" afterPath="$PROJECT_DIR$/imports/ui/pages/reset-password.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/pages/signup.js" afterPath="$PROJECT_DIR$/imports/ui/pages/signup.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/imports/ui/pages/tags.js" afterPath="$PROJECT_DIR$/imports/ui/pages/tags.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/startup/client/routes.js" afterPath="$PROJECT_DIR$/imports/startup/client/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/loading.jsx" afterPath="$PROJECT_DIR$/imports/ui/components/loading.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/tags-list.jsx" afterPath="$PROJECT_DIR$/imports/ui/components/tags-list.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/task.jsx" afterPath="$PROJECT_DIR$/imports/ui/components/task.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/tasks-list.jsx" afterPath="$PROJECT_DIR$/imports/ui/components/tasks-list.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/containers/app-navigation.js" afterPath="$PROJECT_DIR$/imports/ui/containers/app-navigation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/utils/themes.js" afterPath="$PROJECT_DIR$/imports/ui/utils/themes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="olim-web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,16 +55,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app-navigation.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/ui/components/app-navigation.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="app-navigation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/ui/containers/app-navigation.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -101,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tasks-list.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tasks-list.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/ui/components/tasks-list.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
@@ -109,6 +75,16 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-885">
+              <caret line="8" column="60" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -722,12 +698,12 @@
       <workItem from="1464117710086" duration="7810000" />
       <workItem from="1464202710560" duration="14895000" />
       <workItem from="1464243396346" duration="32450000" />
-      <workItem from="1464288859632" duration="13138000" />
+      <workItem from="1464288859632" duration="14106000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105778000" />
+    <option name="totallyTimeSpent" value="106746000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -740,16 +716,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1317" y="752" width="1366" height="738" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31747213" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27552673" sideWeight="0.5026022" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27552673" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27552673" sideWeight="0.49739778" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -790,14 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="60" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1200,6 +1168,14 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-885">
+          <caret line="8" column="60" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>
