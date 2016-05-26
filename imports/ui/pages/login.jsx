@@ -52,7 +52,7 @@ export class PageLogin extends React.Component {
               <div className="relative form_line">
                 <i className="material-icons">perm_identity</i>
                 <TextField
-                  hintText="Nom d'utilisateur"
+                  hintText="Username"
                   style={loginTextFieldStyle}
                   ref="formLogin"
                 />
@@ -60,7 +60,7 @@ export class PageLogin extends React.Component {
               <div className="relative form_line">
                 <i className="material-icons">fingerprint</i>
                 <TextField
-                  hintText="Mot de passe"
+                  hintText="Password"
                   type="password"
                   ref="formPassword"
                   style={loginTextFieldStyle}
@@ -76,7 +76,7 @@ export class PageLogin extends React.Component {
                 <div className="relative form_line">
                   <i className="material-icons">email</i>
                   <TextField
-                    hintText="Adresse email"
+                    hintText="Email address"
                     type="email"
                     ref="formEmail"
                     style={loginTextFieldStyle}
@@ -85,7 +85,7 @@ export class PageLogin extends React.Component {
                 <div className="relative form_line">
                   <i className="material-icons">face</i>
                   <TextField
-                    hintText="Nom complet"
+                    hintText="Full name"
                     ref="formFullName"
                     style={loginTextFieldStyle}
                   />
@@ -94,14 +94,14 @@ export class PageLogin extends React.Component {
           </div>
           <div className="actions" id="auth_actions">
             <RaisedButton
-              label="Connexion"
+              label="Log in"
               className="full-width space_bottom"
               backgroundColor={this.state.showSignup ? primaryDarkColor : accentColor}
               labelColor={this.state.showSignup ? '#fff' : primaryDarkColor}
               onClick={this.onLoginClick}
             />
             <RaisedButton
-              label="Créer un compte"
+              label="Sign up"
               className="full-width"
               backgroundColor={!this.state.showSignup ? primaryDarkColor : accentColor}
               labelColor={this.state.showSignup ? primaryDarkColor : '#fff'}
