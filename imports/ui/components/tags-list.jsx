@@ -15,7 +15,7 @@ export class TagsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tagDialogOpened: true,
+      tagDialogOpened: false,
       tagNameValue: '',
       currentId: false,
       tagIconValue: 'label_outline',

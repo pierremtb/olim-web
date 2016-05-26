@@ -6,6 +6,7 @@ import { AppLayout } from '../../ui/layouts/app-layout';
 import { PublicLayout } from '../../ui/layouts/public-layout.jsx';
 import { PageTasks } from '../../ui/pages/tasks';
 import { PageTags } from '../../ui/pages/tags';
+import { PageSettings } from '../../ui/pages/settings';
 import { PageLogin } from '../../ui/pages/login';
 import { NotFound } from '../../ui/pages/not-found';
 import { RecoverPassword } from '../../ui/pages/recover-password';
@@ -45,8 +46,10 @@ Meteor.startup(() => {
         </Route>
         <Route path="/" component={AppLayout}>
           <IndexRoute name="index" component={PageTasks} onEnter={requireAuth} />
-          <Route name="tasks" path="/tasks" component={PageTasks} onEnter={requireAuth} />
-          <Route name="tags" path="/tags" component={PageTags} onEnter={requireAuth} />
+          <Route name="Tasks" path="/tasks" component={PageTasks} onEnter={requireAuth} />
+          <Route name="Tasks" path="/tasks/tag/:tagName" component={PageTasks} onEnter={requireAuth} />
+          <Route name="Tags" path="/tags" component={PageTags} onEnter={requireAuth} />
+          <Route name="Settings" path="/settings" component={PageSettings} onEnter={requireAuth} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

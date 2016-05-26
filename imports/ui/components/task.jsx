@@ -251,7 +251,7 @@ export class Task extends React.Component {
                     }}
                   >
                     <MenuItem
-                      primaryText="Postpone to 1h"
+                      primaryText="Postpone to the next hour"
                       onTouchTap={() =>
                         this.setNewTime(moment(this.props.dueDate).add(1, 'h').toDate())
                       }

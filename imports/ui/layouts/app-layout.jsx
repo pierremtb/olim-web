@@ -4,7 +4,11 @@ import AppNavigation from '../containers/app-navigation.js';
 export function AppLayout({ children }) {
   return (
     <div>
-      <AppNavigation />
+      <AppNavigation
+        route={children.props.route}
+        routes={children.props.routes}
+        routeParams={children.props.routeParams}
+      />
       <div className="main-page">
         {children}
       </div>

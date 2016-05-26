@@ -9,13 +9,17 @@ import MenuItem from 'material-ui/MenuItem';
 import Drawer from 'material-ui/Drawer';
 import FontIcon from 'material-ui/FontIcon';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { avatarBackgroundColor } from '../utils/themes';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
+import Avatar from 'material-ui/Avatar';
+import { Chip } from './chip.jsx';
 
 export class AuthenticatedNavigation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       accountMenuOpened: false,
+      tagsPopoverOpened: false,
       drawerOpened: false,
       currentPageTitle: 'Tags',
     };
@@ -26,6 +30,10 @@ export class AuthenticatedNavigation extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
     this.openTagsPage = this.openTagsPage.bind(this);
     this.openTasksPage = this.openTasksPage.bind(this);
+    this.openSettingsPage = this.openSettingsPage.bind(this);
+    this.handleTagsPopoverOpen = this.handleTagsPopoverOpen.bind(this);
+    this.handleTagsPopoverClose = this.handleTagsPopoverClose.bind(this);
+    this.getCurrentTag = this.getCurrentTag.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +42,14 @@ export class AuthenticatedNavigation extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  getCurrentTag() {
+    const { tagName } = this.props.routeParams;
+    if (!tagName) {
+      return null;
+    }
+    return this.props.tags.filter(tag => tag.name.toLowerCase() === tagName)[0];
   }
 
   handleAccountMenuOpen(event) {
@@ -46,6 +62,18 @@ export class AuthenticatedNavigation extends React.Component {
 
   handleAccountMenuClose() {
     this.setState({ accountMenuOpened: false });
+  }
+
+  handleTagsPopoverOpen(event) {
+    event.preventDefault();
+    this.setState({
+      tagsPopoverOpened: true,
+      tagsPopoverAnchor: event.currentTarget,
+    });
+  }
+
+  handleTagsPopoverClose() {
+    this.setState({ tagsPopoverOpened: false });
   }
 
   handleDrawerOpen() {
@@ -69,14 +97,17 @@ export class AuthenticatedNavigation extends React.Component {
 
   openTagsPage() {
     this.handleDrawerClose();
-    this.setState({ currentPageTitle: 'Tags' });
     browserHistory.push('/tags');
   }
 
   openTasksPage() {
     this.handleDrawerClose();
-    this.setState({ currentPageTitle: 'Tasks' });
     browserHistory.push('/tasks');
+  }
+
+  openSettingsPage() {
+    this.handleDrawerClose();
+    browserHistory.push('/settings');
   }
 
   render() {
@@ -102,9 +133,31 @@ export class AuthenticatedNavigation extends React.Component {
             >
               menu
             </FontIcon>
-            <ToolbarTitle text={this.state.currentPageTitle} style={{ marginLeft: 32 }} />
+            <ToolbarTitle text={this.props.routes[1].name} style={{ marginLeft: 32 }} />
           </ToolbarGroup>
           <ToolbarGroup>
+            {this.getCurrentTag() ?
+              <div style={{ marginTop: 15 }}>
+                <Chip
+                  deletable
+                  leftIcon={this.getCurrentTag().icon}
+                  leftChar={this.getCurrentTag().name.charAt(0)}
+                  leftColor={this.getCurrentTag().color ? this.getCurrentTag().color : avatarBackgroundColor}
+                  text={`#${this.getCurrentTag().name}`}
+                  onDeleteButtonClick={() => browserHistory.push('/tasks')}
+                />
+              </div>
+            : null}
+          </ToolbarGroup>
+          <ToolbarGroup>
+            {this.props.routes[1].name === 'Tasks' ?
+              <FontIcon
+                className="material-icons"
+                onTouchTap={this.handleTagsPopoverOpen}
+              >
+                filter_list
+              </FontIcon>
+            : null}
             <FontIcon className="material-icons">
               search
             </FontIcon>
@@ -131,6 +184,35 @@ export class AuthenticatedNavigation extends React.Component {
             />
             <Divider />
             <MenuItem primaryText="Sign out" onTouchTap={this.handleLogout} />
+          </Menu>
+        </Popover>
+        <Popover
+          open={this.state.tagsPopoverOpened}
+          anchorEl={this.state.tagsPopoverAnchor}
+          anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+          targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+          onRequestClose={this.handleTagsPopoverClose}
+        >
+          <Menu>
+            <SubHeader>Add a filter</SubHeader>
+            {this.props.tags ?
+              this.props.tags.map(tag =>
+                <MenuItem
+                  primaryText={`#${tag.name}`}
+                  onTouchTap={() => {
+                    this.handleTagsPopoverClose();
+                    browserHistory.push(`/tasks/tag/${tag.name.toLowerCase()}`);
+                  }}
+                  leftIcon={
+                    <FontIcon
+                      style={{ color: tag.color ? tag.color : avatarBackgroundColor }}
+                      className="material-icons"
+                    >
+                      {tag.icon ? tag.icon : 'label_outline'}
+                    </FontIcon>
+                  }
+                />
+              ) : null}
           </Menu>
         </Popover>
         <Drawer
@@ -169,7 +251,7 @@ export class AuthenticatedNavigation extends React.Component {
           <Divider />
           <SubHeader>Account</SubHeader>
           <MenuItem
-            onTouchTap={this.handleDrawerClose}
+            onTouchTap={this.openSettingsPage}
             leftIcon={<FontIcon className="material-icons">settings</FontIcon>}
           >
             Settings
@@ -184,4 +266,11 @@ export class AuthenticatedNavigation extends React.Component {
       </div>
     );
   }
+};
+
+AuthenticatedNavigation.propTypes = {
+  tags: React.PropTypes.array,
+  route: React.PropTypes.object,
+  routes: React.PropTypes.object,
+  routeParams: React.PropTypes.object,
 };
