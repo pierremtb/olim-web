@@ -31,7 +31,7 @@ export const updateTask = new ValidatedMethod({
   validate: new SimpleSchema({
     _id: { type: String },
     update: { type: Object },
-    'update.dueDate': { type: Date, optional: true },
+    'update.dueDate': { type: Number, optional: true },
     'update.tag': { type: String, regEx: SimpleSchema.RegEx.Id, optional: true },
     'update.reminder': { type: Object, optional: true },
     'update.reminder.time': { type: Number, optional: true },

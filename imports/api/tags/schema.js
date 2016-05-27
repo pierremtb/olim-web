@@ -6,7 +6,7 @@ export const insertTagSchema = new SimpleSchema({
     regEx: SimpleSchema.RegEx.Id,
   },
   createdAt: {
-    type: Date,
+    type: Number,
   },
   name: {
     type: String,

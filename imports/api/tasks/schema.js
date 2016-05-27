@@ -9,13 +9,13 @@ export const insertTaskSchema = new SimpleSchema({
     type: String,
   },
   createdAt: {
-    type: Date,
+    type: Number,
   },
   done: {
     type: Boolean,
   },
   dueDate: {
-    type: Date,
+    type: Number,
   },
   tag: {
     type: String,

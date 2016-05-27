@@ -38,7 +38,7 @@ export class TagsList extends React.Component {
       icon: this.state.tagIconValue,
       color: this.state.tagColorValue,
       comments: this.state.tagCommentsValue,
-      createdAt: new Date(),
+      createdAt: (new Date()).getTime(),
     };
     insertTag.call(tag, err => {
       if (!err) {

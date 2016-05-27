@@ -39,8 +39,8 @@ export class TaskAdder extends React.Component {
     const task = {
       owner: Meteor.userId(),
       title: this.state.titleValue,
-      createdAt: new Date,
-      dueDate: this.state.dueDateValue,
+      createdAt: (new Date()).getTime(),
+      dueDate: this.state.dueDateValue.getTime(),
       done: false,
     };
     if (this.state.isReminder) {
