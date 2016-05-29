@@ -31,7 +31,7 @@ export class TasksGroup extends React.Component {
 
   postponeAllTo(newDate, setDate) {
     this.props.tasks.map(task => {
-      const dueDate = setDate(task.dueDate, newDate(task.dueDate));
+      const dueDate = setDate(task.dueDate, newDate(task.dueDate)).getTime();
       updateTask.call(
         { _id: task._id, update: { dueDate } },
         (err) => {

@@ -59,7 +59,7 @@ export class Task extends React.Component {
     const { taskId, dueDate, onDateChange } = this.props;
     if (taskId) {
       updateTask.call(
-        { _id: taskId, update: { dueDate: setDay(dueDate, day) } },
+        { _id: taskId, update: { dueDate: setDay(dueDate, day).getTime() } },
         (err) => {
           if (err) {
             console.log(err);
@@ -75,7 +75,7 @@ export class Task extends React.Component {
     const { taskId, dueDate, onDateChange } = this.props;
     if (taskId) {
       updateTask.call(
-        { _id: taskId, update: { dueDate: setTime(dueDate, time) } },
+        { _id: taskId, update: { dueDate: setTime(dueDate, time).getTime() } },
         (err) => {
           if (err) {
             console.log(err);
