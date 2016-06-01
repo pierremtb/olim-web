@@ -110,7 +110,7 @@ export class TasksGroup extends React.Component {
             {this.props.tasks.map(task =>
               <Task
                 title={task.title}
-                dueDate={task.dueDate}
+                dueDate={new Date(task.dueDate)}
                 tag={this.props.availableTags.filter(tag => tag._id === task.tag)[0]}
                 onTagChange={tagId => this.setTag(task._id, tagId)}
                 availableTags={this.props.availableTags}

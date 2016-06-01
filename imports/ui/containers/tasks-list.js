@@ -10,6 +10,7 @@ function composer(params, onReady) {
   if (tasksSubscription.ready() && tagsSubscription.ready()) {
     const tasks = Tasks.find().fetch();
     const tags = Tags.find().fetch();
+    tasks.sort((task1, task2) => task1.dueDate - task2.dueDate);
     onReady(null, { tasks, tags });
   }
 }
