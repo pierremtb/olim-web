@@ -178,7 +178,7 @@ export class AuthenticatedNavigation extends React.Component {
         >
           <Menu>
             <MenuItem
-              primaryText={Meteor.user().profile.fullName}
+              primaryText={Meteor.user().profile.name}
               onTouchTap={this.handleAccountMenuClose}
               disabled
             />

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Carefully designed to-do app",
   "scripts": {
-    "start": "meteor --settings settings-development.json",
+    "start": "meteor --settings settings.json",
     "test": "meteor test --driver-package practicalmeteor:mocha --port 5000",
     "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
     "chimp-test": "chimp --ddp=http://localhost:3000 --mocha --path=tests",
@@ -57,9 +57,11 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "googleapis": "^9.0.0",
     "jquery": "^2.2.3",
     "jquery-validation": "^1.15.0",
     "material-ui": "^0.15.0",
+    "meteor-node-stubs": "^0.2.3",
     "moment": "^2.13.0",
     "normalize.css": "^4.1.1",
     "react": "^15.0.2",

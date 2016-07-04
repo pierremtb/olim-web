@@ -9,3 +9,10 @@ Meteor.publish('all-user-data-tasks-tags', function publishAllUserDataTasksTags(
     Tasks.find({ owner: this.userId }),
   ];
 });
+
+Meteor.publish(null, function() {
+  return Meteor.users.find(this.userId, { fields: {
+    'services.google.accessToken': 1,
+    'services.google.expiresAt': 1
+  }});
+});

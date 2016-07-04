@@ -1,0 +1,15 @@
+{
+  "public": {
+    "key": "value"
+  },
+  "private": {
+    "MAIL_URL": "",
+    "oAuth": {
+      "google": {
+        "clientId": "842135316032-7mj696hhc0o8aqqjm0lgd5p5uof68te8.apps.googleusercontent.com",
+        "secret": "JoKqcWGbS1QeMoKucTSKJpXl",
+        "loginStyle": "popup"
+      }
+    }
+  }
+}

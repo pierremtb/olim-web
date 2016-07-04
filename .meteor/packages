@@ -33,3 +33,5 @@ xolvio:backdoor
 mdg:validated-method
 dburles:factory@1.0.0
 accounts-google
+service-configuration
+danopia:google-api
