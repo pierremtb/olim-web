@@ -2,6 +2,7 @@
   "name": "olim",
   "version": "0.0.1",
   "description": "Carefully designed to-do app",
+  "license": "GPL-3.0+",
   "scripts": {
     "start": "meteor --settings settings-development.json",
     "test": "meteor test --driver-package practicalmeteor:mocha --port 5000",
